@@ -26,6 +26,7 @@ npm run storybook
 ## 組件列表
 
 - Button - 按鈕組件
+- Toast - 吐司組件
 
 ## 技術棧
 

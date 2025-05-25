@@ -1,33 +1,19 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
+import ToastContainer, { useToast } from "./components/Toast";
 import "./App.css";
 
 function App() {
-  const [count, setCount] = useState(0);
-
+  const toast = useToast();
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
+      <ToastContainer position="top-right" duration={3000} />
+      <div style={{ display: "flex", gap: "16px" }}>
+        <button onClick={() => toast.success("操作成功！")}>
+          顯示成功 Toast
         </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
+        <button onClick={() => toast.error("發生錯誤！")}>
+          顯示錯誤 Toast
+        </button>
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
     </>
   );
 }
