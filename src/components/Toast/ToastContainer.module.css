@@ -1,0 +1,151 @@
+.container {
+  position: fixed;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.container.topLeft {
+  top: 24px;
+  left: 24px;
+}
+
+.container.topCenter {
+  top: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.container.topRight {
+  top: 24px;
+  right: 24px;
+}
+
+.container.bottomLeft {
+  bottom: 24px;
+  left: 24px;
+}
+
+.container.bottomCenter {
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.container.bottomRight {
+  bottom: 24px;
+  right: 24px;
+}
+
+.list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.toastItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  min-width: 320px;
+  max-width: 480px;
+  animation: slideIn 0.3s ease-out;
+  position: relative;
+}
+
+.toastItem.success {
+  background-color: #dcfce7;
+  border: 1px solid #16a34a;
+}
+
+.toastItem.error {
+  background-color: #fecaca;
+  border: 1px solid #dc2626;
+}
+
+.toastItem.warning {
+  background-color: #fef3c7;
+  border: 1px solid #d97706;
+}
+
+.toastItem.info {
+  background-color: #dbeafe;
+  border: 1px solid #2563eb;
+}
+
+.content {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.icon {
+  font-size: 18px;
+  font-weight: bold;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.icon.success {
+  color: #22c55e;
+}
+
+.icon.error {
+  color: #ef4444;
+}
+
+.icon.warning {
+  color: #f59e0b;
+}
+
+.icon.info {
+  color: #3b82f6;
+}
+
+.text {
+  font-size: 14px;
+  color: #1f2937;
+  font-weight: 500;
+  flex: 1;
+}
+
+.closeButton {
+  background: none;
+  border: none;
+  font-size: 16px;
+  color: #9ca3af;
+  cursor: pointer;
+  padding: 4px;
+  line-height: 1;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+
+.closeButton:hover {
+  background-color: #f3f4f6;
+  color: #374151;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
