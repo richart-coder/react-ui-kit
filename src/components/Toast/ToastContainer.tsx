@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import eventBus from "./subEvent";
 import styles from "./ToastContainer.module.css";
+
 import { Check, X, AlertTriangle, Info } from "lucide-react";
 type ToastType = "success" | "error" | "warning" | "info";
 
@@ -40,14 +41,14 @@ const TOAST_CONFIG = {
   },
 } as const;
 
-const getPositionStyles = (position: ToastPosition): React.CSSProperties => {
-  const positions = {
-    "top-left": { top: "20px", left: "20px" },
-    "top-right": { top: "20px", right: "20px" },
-    "bottom-left": { bottom: "20px", left: "20px" },
-    "bottom-right": { bottom: "20px", right: "20px" },
+const getPositionClass = (position: ToastPosition): string => {
+  const positionMap = {
+    "top-left": styles.topLeft,
+    "top-center": styles.topCenter,
+    "top-right": styles.topRight,
+    "bottom-left": styles.bottomLeft,
   };
-  return positions[position];
+  return positionMap[position];
 };
 
 const ToastContainer = ({ position, duration }: ToastProps) => {
@@ -70,20 +71,11 @@ const ToastContainer = ({ position, duration }: ToastProps) => {
     }
   }, [messages, duration]);
 
-  const containerStyle: React.CSSProperties = {
-    position: "fixed",
-    zIndex: 1000,
-    display: "flex",
-    flexDirection: "column",
-    gap: "12px",
-    ...getPositionStyles(position),
-  };
-
   const handleDismiss = (id: string) => {
     setMessages((prev) => prev.filter((msg) => msg.id !== id));
   };
   return (
-    <div style={containerStyle}>
+    <div className={`${styles.container} ${getPositionClass(position)}`}>
       <ul className={styles.list}>
         {messages?.map((message) => {
           const config = TOAST_CONFIG[message.type];
