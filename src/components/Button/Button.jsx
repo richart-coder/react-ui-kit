@@ -1,6 +1,6 @@
 import React from "react";
-import "./styles.css";
 import Spinner from "../Spinner";
+import "./styles.css";
 
 const Button = ({
   className = "",

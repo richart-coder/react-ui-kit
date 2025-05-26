@@ -1,7 +1,7 @@
 import React from "react";
 import "./styles.css";
 
-const Spinner = ({ size = "md", className = "", color, ...props }) => {
+const Spinner = ({ size = "md", className = "", color = "#000", ...props }) => {
   const darkerColor = color
     ? `color-mix(in srgb, ${color} 80%, black)`
     : undefined;
