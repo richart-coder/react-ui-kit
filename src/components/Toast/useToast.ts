@@ -1,5 +1,5 @@
 import { useCallback, useRef } from "react";
-import subEvent from "./subEvent";
+import subEvent from "./event-bus";
 
 type ToastType = "success" | "error" | "warning" | "info";
 

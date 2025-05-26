@@ -44,7 +44,12 @@ const ToastStoryWrapper = ({
 
   const handleUseCase = () => {
     const message = messages[messageLength][messageType];
-
+    const specialMessages = {
+      success: "✨ Emoji 成功訊息 🎉",
+      error: "HTTP 404: Resource not found",
+      warning: "餘額：NT$ 1,234.56 元",
+      info: "HTML <script>alert('test')</script> 測試",
+    };
     switch (useCase) {
       case "basic":
         toast[messageType](message);
@@ -63,12 +68,6 @@ const ToastStoryWrapper = ({
         break;
 
       case "special":
-        const specialMessages = {
-          success: "✨ Emoji 成功訊息 🎉",
-          error: "HTTP 404: Resource not found",
-          warning: "餘額：NT$ 1,234.56 元",
-          info: "HTML <script>alert('test')</script> 測試",
-        };
         toast[messageType](specialMessages[messageType]);
         break;
     }

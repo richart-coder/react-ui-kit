@@ -1,17 +1,9 @@
-import React, { useState, useEffect } from "react";
-import eventBus from "./subEvent";
-import styles from "./ToastContainer.module.css";
+import { AlertTriangle, Check, Info, X } from "lucide-react";
+import React, { useEffect, useState } from "react";
+import eventBus from "./event-bus";
+import styles from "./style.module.css";
 
-import { Check, X, AlertTriangle, Info } from "lucide-react";
-type ToastType = "success" | "error" | "warning" | "info";
-
-type ToastMessage = {
-  id: string;
-  message: string;
-  type: ToastType;
-};
-
-type ToastPosition = "top-left" | "top-right" | "bottom-left" | "bottom-right";
+import type { ToastMessage, ToastPosition } from "./types";
 
 type ToastProps = {
   position: ToastPosition;
@@ -21,8 +13,6 @@ type ToastProps = {
 const TOAST_CONFIG = {
   success: {
     icon: <Check size={16} />,
-    iconColor: "#ffffff",
-    iconBg: "#22c55e",
   },
   error: {
     icon: <X size={16} />,
@@ -47,6 +37,8 @@ const getPositionClass = (position: ToastPosition): string => {
     "top-center": styles.topCenter,
     "top-right": styles.topRight,
     "bottom-left": styles.bottomLeft,
+    "bottom-center": styles.bottomCenter,
+    "bottom-right": styles.bottomRight,
   };
   return positionMap[position];
 };
@@ -76,7 +68,7 @@ const ToastContainer = ({ position, duration }: ToastProps) => {
   };
   return (
     <div className={`${styles.container} ${getPositionClass(position)}`}>
-      <ul className={styles.list}>
+      <ul className={styles.messageList}>
         {messages?.map((message) => {
           const config = TOAST_CONFIG[message.type];
 
@@ -86,19 +78,7 @@ const ToastContainer = ({ position, duration }: ToastProps) => {
               className={`${styles.toastItem} ${styles[message.type]}`}
             >
               <div className={styles.content}>
-                <span
-                  className={`toast-icon ${message.type}`}
-                  style={{
-                    color: config.iconColor,
-                    backgroundColor: config.iconBg,
-                    width: "32px",
-                    height: "32px",
-                    borderRadius: "50%",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                  }}
-                >
+                <span className={`${styles.toastIcon} ${styles[message.type]}`}>
                   {config.icon}
                 </span>
                 <span className={styles.text}>{message.message}</span>
