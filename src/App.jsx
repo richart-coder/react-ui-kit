@@ -7,24 +7,30 @@ function App() {
   return (
     <>
       <ToastContainer position="bottom-right" duration={3000} />
-      <div style={{ display: "flex", gap: "16px" }}>
+      <div
+        style={{
+          display: "flex",
+          gap: "16px",
+          width: "500px",
+          height: "300px",
+        }}
+      >
         <Image
           src="/assets/images/house.jpg"
           alt="test"
           loading="lazy"
           placeholder="blur"
-          width={200}
-          height={300}
-        />
-        <Image
-          src="/assets/images/studio.png"
-          loading="lazy"
-          alt="test"
-          placeholder="blur"
-          width={200}
-          height={300}
+          fill
         />
       </div>
+      <Image
+        src="/assets/images/house.jpg"
+        alt="test"
+        loading="lazy"
+        placeholder="blur"
+        width={500}
+        height={300}
+      />
       <div style={{ display: "flex", gap: "16px" }}>
         <button onClick={() => toast.success("操作成功！")}>
           顯示成功 Toast

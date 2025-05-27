@@ -26,8 +26,8 @@ async function generatePlaceholders() {
 
   for (const imagePath of imageFiles) {
     const buffer = await sharp(imagePath)
-      .resize(40, 40)
-      .webp({ quality: 25 })
+      .resize(20, 20, { fit: "cover", position: "center" })
+      .webp({ quality: 50 })
       .toBuffer();
 
     const base64 = `data:image/webp;base64,${buffer.toString("base64")}`;

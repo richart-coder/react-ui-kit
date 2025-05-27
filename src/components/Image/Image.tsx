@@ -39,18 +39,18 @@ const Image = ({
 
   return (
     <div
-      className={`${styles.imageContainer} ${isLoaded ? styles.loaded : ""} ${
-        fill ? styles.fill : ""
-      }`}
+      className={`${styles.imageContainer} ${isLoaded ? styles.loaded : ""}`}
       style={{
-        width: fill ? undefined : width,
-        height: fill ? undefined : height,
+        width: fill ? "100%" : width,
+        height: fill ? "100%" : height,
         backgroundImage:
           !isLoaded && placeholderURL ? `url(${placeholderURL})` : "none",
       }}
     >
       <img
         className={styles.image}
+        width={width}
+        height={height}
         src={src}
         alt={alt}
         loading={loading}
