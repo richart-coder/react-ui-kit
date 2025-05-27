@@ -30,7 +30,7 @@ async function generatePlaceholders() {
       .webp({ quality: 25 })
       .toBuffer();
 
-    const base64 = `data:image/jpeg;base64,${buffer.toString("base64")}`;
+    const base64 = `data:image/webp;base64,${buffer.toString("base64")}`;
     const relativePath = path.relative(publicDir, imagePath);
     placeholders[`/${relativePath}`] = base64;
   }
