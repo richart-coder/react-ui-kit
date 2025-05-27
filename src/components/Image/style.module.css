@@ -1,0 +1,34 @@
+.imageContainer {
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  filter: blur(10px);
+  transition: filter 250ms ease-in-out;
+}
+
+.imageContainer.loaded {
+  filter: blur(0px);
+}
+
+.imageContainer.fill {
+  width: 100%;
+  height: 100%;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 250ms ease-in-out;
+}
+
+.imageContainer.loaded::before {
+  animation: none;
+  content: none;
+}
+
+.imageContainer.loaded .image {
+  opacity: 1;
+}
