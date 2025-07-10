@@ -1,45 +1,59 @@
 import React from "react";
 import "./App.css";
-import Image from "./components/Image/Image";
-import ToastContainer, { useToast } from "./components/Toast";
-function App() {
-  const toast = useToast();
+import { ChevronsUpDown } from "lucide-react";
+import {
+  Collapsible,
+  CollapsibleContent,
+  CollapsibleTrigger,
+} from "./components/ui/Collapsible";
+
+export function CollapsibleDemo() {
+  const [isOpen, setIsOpen] = React.useState(false);
   return (
-    <>
-      <ToastContainer position="bottom-right" duration={3000} />
-      <div
-        style={{
-          display: "flex",
-          gap: "16px",
-          width: "500px",
-          height: "300px",
-        }}
+    <div className="collapsible-container">
+      <Collapsible
+        open={isOpen}
+        onOpenChange={setIsOpen}
+        className="flex flex-col gap-2"
       >
-        <Image
-          src="/assets/images/house.jpg"
-          alt="test"
-          loading="lazy"
-          placeholder="blur"
-          fill
-        />
+        <div className="collapsible-header flex items-center justify-between">
+          <h4 className="collapsible-title">📚 我的收藏庫</h4>
+          <CollapsibleTrigger asChild>
+            <button className={`collapsible-trigger ${isOpen ? "open" : ""}`}>
+              <ChevronsUpDown />
+              <span className="sr-only">Toggle</span>
+            </button>
+          </CollapsibleTrigger>
+        </div>
+
+        <div className="collapsible-item">
+          <span className="font-mono text-sm">@radix-ui/primitives</span>
+        </div>
+
+        <CollapsibleContent className="collapsible-content">
+          <div className="collapsible-item">
+            <span className="font-mono text-sm">@radix-ui/colors</span>
+          </div>
+          <div className="collapsible-item">
+            <span className="font-mono text-sm">@stitches/react</span>
+          </div>
+          <div className="collapsible-item">
+            <span className="font-mono text-sm">@radix-ui/themes</span>
+          </div>
+        </CollapsibleContent>
+      </Collapsible>
+    </div>
+  );
+}
+
+function App() {
+  return (
+    <div className="app">
+      <div className="app-header">
+        <h1>Collapsible Demo</h1>
       </div>
-      <Image
-        src="/assets/images/house.jpg"
-        alt="test"
-        loading="lazy"
-        placeholder="blur"
-        width={500}
-        height={300}
-      />
-      <div style={{ display: "flex", gap: "16px" }}>
-        <button onClick={() => toast.success("操作成功！")}>
-          顯示成功 Toast
-        </button>
-        <button onClick={() => toast.error("發生錯誤！")}>
-          顯示錯誤 Toast
-        </button>
-      </div>
-    </>
+      <CollapsibleDemo />
+    </div>
   );
 }
 
