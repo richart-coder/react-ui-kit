@@ -104,6 +104,7 @@
   padding: 1.5rem;
   margin: 2rem auto;
   max-width: 400px;
+  -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.2);
 }
@@ -156,6 +157,7 @@
   background: #f8fafc;
   border-radius: 12px;
   margin-top: 0.5rem;
+  animation: slideDown 0.3s ease-out;
 }
 
 .collapsible-item {
@@ -178,10 +180,6 @@
 
 .collapsible-item:last-child {
   margin-bottom: 0;
-}
-
-.collapsible-content {
-  animation: slideDown 0.3s ease-out;
 }
 
 @keyframes slideDown {
