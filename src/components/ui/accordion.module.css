@@ -1,0 +1,28 @@
+.accordion-trigger {
+  width: 100%;
+  padding: 24px 32px;
+  background: #ffffff;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: 600;
+  color: #1e293b;
+  transition: all 0.2s ease;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  line-height: 1.4;
+}
+
+.accordion-trigger svg {
+  transition: transform 0.3s ease-out;
+}
+
+.accordion-trigger.open svg {
+  transform: rotate(180deg);
+}
+.accordion-trigger:hover {
+  background: #f8fafc;
+}
